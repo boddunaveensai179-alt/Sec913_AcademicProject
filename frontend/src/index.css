@@ -1,0 +1,579 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   IMPORT FONT
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =========================================================
+   ROOT COLORS
+========================================================= */
+
+:root {
+
+  --sky-blue: #38bdf8;
+
+  --light-sky: #7dd3fc;
+
+  --mint-green: #86efac;
+
+  --light-green: #bbf7d0;
+
+  --deep-blue: #0f172a;
+
+  --dark-bg: #02131f;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html {
+
+  scroll-behavior: smooth;
+}
+
+body {
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  font-family: 'Poppins', sans-serif;
+
+  color: white;
+
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,0.35), transparent 25%),
+    radial-gradient(circle at top right, rgba(125,211,252,0.30), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(134,239,172,0.28), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(187,247,208,0.22), transparent 25%),
+    linear-gradient(
+      135deg,
+      #02131f 0%,
+      #06263b 40%,
+      #0a3a4d 100%
+    );
+
+  background-attachment: fixed;
+
+  animation: bgMove 12s infinite alternate;
+}
+
+/* =========================================================
+   BACKGROUND ANIMATION
+========================================================= */
+
+@keyframes bgMove {
+
+  0% {
+
+    background-position:
+      left top,
+      right top,
+      left bottom,
+      right bottom;
+  }
+
+  100% {
+
+    background-position:
+      20% 10%,
+      80% 20%,
+      10% 90%,
+      90% 80%;
+  }
+}
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.glass {
+
+  background: rgba(255,255,255,0.07);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 30px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.45),
+    0 0 25px rgba(56,189,248,0.15);
+}
+
+/* GLOW BORDER */
+
+.glass::before {
+
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  padding: 1px;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--sky-blue),
+      var(--light-sky),
+      var(--mint-green),
+      var(--light-green)
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+/* HOVER EFFECT */
+
+.glass:hover {
+
+  transform: translateY(-8px) scale(1.02);
+
+  transition: all 0.4s ease;
+
+  box-shadow:
+    0 10px 45px rgba(56,189,248,0.35),
+    0 0 60px rgba(134,239,172,0.25);
+}
+
+/* =========================================================
+   GRADIENT TEXT
+========================================================= */
+
+.gradient-text {
+
+  font-family: 'Orbitron', sans-serif;
+
+  background:
+    linear-gradient(
+      90deg,
+      #38bdf8,
+      #7dd3fc,
+      #86efac,
+      #bbf7d0
+    );
+
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: textFlow 5s linear infinite;
+}
+
+@keyframes textFlow {
+
+  0% {
+
+    background-position: 0%;
+  }
+
+  100% {
+
+    background-position: 300%;
+  }
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+
+  cursor: pointer;
+
+  border: none;
+
+  transition: all 0.3s ease;
+
+  font-weight: 700;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+button:active {
+
+  transform: scale(0.95);
+}
+
+/* PRIMARY */
+
+.btn-primary {
+
+  background:
+    linear-gradient(
+      135deg,
+      #38bdf8,
+      #0ea5e9
+    );
+
+  color: white;
+
+  padding: 14px 32px;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 25px rgba(56,189,248,0.35);
+}
+
+.btn-primary:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 45px rgba(56,189,248,0.75);
+}
+
+/* SECONDARY */
+
+.btn-secondary {
+
+  background:
+    linear-gradient(
+      135deg,
+      #86efac,
+      #22c55e
+    );
+
+  color: #052e16;
+
+  padding: 14px 32px;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 25px rgba(134,239,172,0.35);
+}
+
+.btn-secondary:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 45px rgba(134,239,172,0.75);
+}
+
+/* DANGER */
+
+.btn-danger {
+
+  background:
+    linear-gradient(
+      135deg,
+      #38bdf8,
+      #86efac
+    );
+
+  color: #052e16;
+
+  padding: 14px 32px;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 25px rgba(125,211,252,0.35);
+}
+
+.btn-danger:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 45px rgba(187,247,208,0.75);
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+input,
+textarea,
+select {
+
+  width: 100%;
+
+  padding: 16px 20px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: rgba(255,255,255,0.05);
+
+  backdrop-filter: blur(12px);
+
+  color: white;
+
+  font-size: 16px;
+
+  transition: all 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+
+  color: rgba(255,255,255,0.55);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+
+  outline: none;
+
+  border-color: var(--sky-blue);
+
+  background: rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.45),
+    0 0 40px rgba(134,239,172,0.18);
+}
+
+/* =========================================================
+   FLOATING ANIMATION
+========================================================= */
+
+@keyframes floating {
+
+  0% {
+
+    transform: translateY(0px);
+  }
+
+  50% {
+
+    transform: translateY(-10px);
+  }
+
+  100% {
+
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+
+  animation: floating 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   PULSE GLOW
+========================================================= */
+
+@keyframes pulseGlow {
+
+  0% {
+
+    box-shadow:
+      0 0 15px rgba(56,189,248,0.25);
+  }
+
+  50% {
+
+    box-shadow:
+      0 0 35px rgba(134,239,172,0.55);
+  }
+
+  100% {
+
+    box-shadow:
+      0 0 15px rgba(56,189,248,0.25);
+  }
+}
+
+.glow-animation {
+
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+  background: #02131f;
+}
+
+::-webkit-scrollbar-thumb {
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      #38bdf8,
+      #86efac
+    );
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+    linear-gradient(
+      #7dd3fc,
+      #bbf7d0
+    );
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+
+  background: #38bdf8;
+
+  color: black;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.App {
+
+  min-height: 100vh;
+
+  text-align: center;
+}
+
+.App-logo {
+
+  height: 32vmin;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 0 20px #38bdf8)
+    drop-shadow(0 0 40px #86efac);
+
+  animation:
+    App-logo-spin 14s linear infinite,
+    floating 4s ease-in-out infinite;
+}
+
+.App-header {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(56,189,248,0.08),
+      rgba(125,211,252,0.08),
+      rgba(134,239,172,0.08)
+    );
+
+  backdrop-filter: blur(20px);
+
+  color: white;
+}
+
+.App-link {
+
+  color: var(--light-sky);
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+}
+
+.App-link:hover {
+
+  color: var(--mint-green);
+
+  text-shadow:
+    0 0 15px var(--mint-green);
+}
+
+/* =========================================================
+   LOGO SPIN
+========================================================= */
+
+@keyframes App-logo-spin {
+
+  from {
+
+    transform: rotate(0deg);
+  }
+
+  to {
+
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+
+    font-size: 14px;
+  }
+
+  .glass {
+
+    border-radius: 24px;
+  }
+
+  .App-logo {
+
+    height: 25vmin;
+  }
+}

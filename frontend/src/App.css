@@ -1,0 +1,136 @@
+.App {
+
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow-x: hidden;
+}
+
+/* Animated background blobs */
+
+.App::before {
+
+  content: '';
+
+  position: fixed;
+
+  top: -150px;
+  left: -150px;
+
+  width: 400px;
+  height: 400px;
+
+  background: #ff00cc;
+
+  opacity: 0.25;
+
+  filter: blur(120px);
+
+  z-index: -1;
+
+  animation: moveBlob1 12s infinite alternate;
+}
+
+.App::after {
+
+  content: '';
+
+  position: fixed;
+
+  bottom: -150px;
+  right: -150px;
+
+  width: 400px;
+  height: 400px;
+
+  background: #00e5ff;
+
+  opacity: 0.25;
+
+  filter: blur(120px);
+
+  z-index: -1;
+
+  animation: moveBlob2 12s infinite alternate;
+}
+
+@keyframes moveBlob1 {
+
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(80px, 50px);
+  }
+}
+
+@keyframes moveBlob2 {
+
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-80px, -50px);
+  }
+}
+
+/* Logo */
+
+.App-logo {
+
+  height: 120px;
+
+  animation: rotateLogo 10s linear infinite;
+}
+
+@keyframes rotateLogo {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Header */
+
+.App-header {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 40px;
+}
+
+/* Link */
+
+.App-link {
+
+  color: #00e5ff;
+
+  font-weight: bold;
+
+  transition: all 0.3s ease;
+}
+
+.App-link:hover {
+
+  color: #ff00cc;
+
+  text-shadow:
+    0 0 10px #ff00cc;
+}
